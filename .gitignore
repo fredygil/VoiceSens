@@ -1,6 +1,8 @@
 # Ignoring the Configuration files.
-config.py 
-config.pyc 
+.env
+
+# Compiled modules
+*.pyc
 
 # Ignoring all the wav files.  
 "*.wav" 
