@@ -1,0 +1,20 @@
+language: python
+python:
+  - 3.6
+
+# Pre-testing installs
+install:
+  - pip install -r requirements.txt
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+  - docker build -t voice-sens .
+  - docker tag voice-sens fgil666/voice-sens:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push fgil666/voice-sens
